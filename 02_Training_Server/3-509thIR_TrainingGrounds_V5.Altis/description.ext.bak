@@ -1,0 +1,14 @@
+respawn = "BASE";
+respawndelay = "3";
+aikills = 1;
+DisabledAI = true;
+saving=0;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 64;
+};
+author="LTC Drifter";
+OnLoadName = "3-509th IR Training Grounds";
