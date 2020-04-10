@@ -1,0 +1,197 @@
+#include "CHVD\dialog.hpp" // View Distance
+#include "KPGUI\KPGUI_defines.hpp" // Box loader
+#include "KPCF\ui\KPCF_dialog.hpp" // Box Loader
+
+class CfgFunctions
+{	
+	#include "CHVD\CfgFunctions.hpp"
+	#include "KPCF\KPCF_functions.hpp"
+    #include "vcom\cfgFunctions.hpp"	
+};
+
+class CfgRemoteExec
+{
+	// List of script functions allowed to be sent from client via remoteExec
+	class Functions
+	{
+		mode = 2;
+		jip = 1;		
+		
+		class vcm_serverask { allowedTargets = 0;jip = 1; };
+		class VCM_PublicScript { allowedTargets = 0;jip = 1; };
+		class BIS_fnc_debugConsoleExec { allowedTargets = 0;jip = 1; };
+		class SpawnScript { allowedTargets = 0;jip = 1; };
+		class enableSimulationGlobal { allowedTargets = 0;jip = 1; };
+		class VCM_fnc_KnowAbout { allowedTargets = 0;jip = 1; };
+		
+	};
+	
+	
+};
+//////////////////////////HAS//////////////////////////////////
+class CfgCommunicationMenu
+	{
+	class HAS_callTransport
+		{
+		text = "Call for transport";
+		submenu = "#USER:RYD_HAS_CT_submenu";
+		//expression = "[[_this,this,_caller,_pos,_target,_is3D,_ID],RYD_HAS_atCalled] remoteExec ['spawn',2];";
+		expression = "";
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\transport_ca.paa";
+		cursor = "\A3\ui_f\data\igui\cfg\cursors\iconCursorSupport_ca.paa";
+		enable = "1";
+		removeAfterExpressionCall = 0;
+		};
+		
+	class HAS_callSupply
+		{
+		text = "Call for supplies";
+		submenu = "#USER:RYD_HAS_CS_submenu";
+		//expression = "[_this,RYD_HAS_atCalled] remoteExec ['spawn',2]";
+		expression = "";
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa";
+		cursor = "\A3\ui_f\data\igui\cfg\cursors\iconCursorSupport_ca.paa";
+		enable = "1";
+		removeAfterExpressionCall = 0;
+		};
+		
+	class HAS_callCAS
+		{
+		text = "Call CAS support";
+		submenu = "#USER:RYD_HAS_CC_submenu";
+		//expression = "[_this,RYD_HAS_atCalled] remoteExec ['spawn',2]";
+		expression = "";
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\casheli_ca.paa";
+		cursor = "\A3\ui_f\data\igui\cfg\cursors\iconCursorSupport_ca.paa";
+		enable = "1";
+		removeAfterExpressionCall = 0;
+		};
+		
+	class HAS_callCancel
+		{
+		text = "Cancel pending call";
+		submenu = "";
+		expression = "RYD_HAS_CallCancelled = true;publicVariableServer 'RYD_HAS_CallCancelled';";
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
+		cursor = "";
+		enable = "1";
+		removeAfterExpressionCall = 0;
+		};
+		
+	class HAS_FlightCeiling
+		{
+		text = "Change flight ceiling";
+		submenu = "#USER:RYD_HAS_FC_submenu";
+		//expression = "[[nil,nil,nil,100],RYD_HAS_ChangeAltitude] remoteExec ['spawn',2];";
+		expression = "";
+		icon = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa";
+		cursor = "";
+		enable = "1";
+		removeAfterExpressionCall = 0;
+		};
+	};
+
+//////////////////////////HAS End\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+class CfgSounds {
+	sounds[] = {};
+
+	class Power_down 
+	{
+	    name = "Power_down";
+	    sound[] = {"sound\effects\Powerdown.ogg", 1, 1};
+	    titles[] = {};
+    };
+	 
+	class keyboard_sound 
+	{
+	    name = "keyboard_sound";
+	    sound[] = {"sound\effects\keyboard.ogg", 1, 1};
+	    titles[] = {};
+    };
+	 
+	class power_back_on 
+	{
+	    name = "power_back_on";
+	    sound[] = {"sound\effects\power_backon.ogg", 1, 1};
+	    titles[] = {};
+    };
+
+	 
+	class reset_shoot_house 
+	{
+	    name = "reset_shoot_house";
+	    sound[] = {"sound\effects\reset_shoot_house.ogg", 1, 1};
+	    titles[] = {};
+    };	 
+	 
+};
+
+
+
+
+enableDebugConsole[] = {"76561198277313876","76561198024812575","76561198051306330","76561198352564029"};
+
+respawn = 3;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 64;
+};
+
+
+class CfgDebriefing
+{  
+    class AdminMod 
+    {
+        title = "Admin/Cheat Mod Detected ";
+        subtitle = "";
+        description = "Remove Admin Mods or vehicle spawn mods, Mods that reveal Enemy and Rejoin Ie Crosscom ect. ";
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.0,0.3,0.6,1};
+    };
+	
+	class RestrictedMods
+    {
+        title = "Out of Date/Error producing Mod Detected ";
+        subtitle = "";
+        description = "Remove TF47,BloodLust,Bullet Casings mods,NIArms Minigun, Suitcase Nuke, Ravage due to bugs,Mil Gear pack, SPS Equipment  and Rejoin. ";
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.0,0.3,0.6,1};
+    };
+	
+	class ArsenalMod 
+    {
+        title = "Arsenal Mod Detected ";
+        subtitle = "";
+        description = "Remove Arsenal Mods, and Rejoin. ";
+        pictureBackground = "";
+        picture = "";
+        pictureColor[] = {0.0,0.3,0.6,1};
+    };
+};
+
+class CfgDebriefingSections {
+       
+	    class acex_killTracker {
+            title = "Acex Killed Events";
+            variable = "acex_killTracker_outputText";
+        };
+};
+
+
+
+// Corpse Manager
+corpseManagerMode = 1; //Type of removed bodies: 0 - none, 1 - all, 2 - only respawnable, 3 - only non-respawnable 
+corpseLimit = 15; //Max number of bodies which can be available at the same time. When exceeded, start deleting immediately. 
+corpseRemovalMinTime = 60; //Minimal time in seconds a body stays in the scene (can't be removed sooner). 
+corpseRemovalMaxTime = 120; //Maximal time in seconds after which a dead body is removed can't stay longer
+
+class Extended_PreInit_EventHandlers {
+	VCM_CBASettings = call compile preprocessFileLineNumbers "Vcom\Functions\VCM_Functions\fn_CBASettings.sqf";
+};
+

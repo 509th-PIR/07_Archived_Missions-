@@ -1,0 +1,27 @@
+#include "VCOMAI\defines.hpp"
+#include "VCOMAI\DialogDefines.hpp"
+#include "VCOMAI\dialogs.hpp"
+#include "CHVD\dialog.hpp"
+#include "R3F_LOG\desc_include.h"
+
+
+enableDebugConsole = 2; // dangerous in MP
+author="Drifter";
+OnLoadName = "Steel Vengeance";
+OnLoadMission = "Operation";
+
+respawn = "BASE";
+aikills = 1;
+DisabledAI = true;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 64;
+};
+
+class CfgFunctions
+{
+    #include "CHVD\CfgFunctions.hpp"
+};

@@ -1,0 +1,105 @@
+;#############################################################################################################################
+;##########################################################SCRIPT BY:##########################################################
+;############################################################FLAT!!!############################################################
+;#############################################################################################################################
+_object = _this select 0;
+_speed = _this select 1;
+_mode = _this select 2;
+_type = _this select 3;
+_unitdir = getdir _object
+
+#start
+? (_mode==0):goto "cantstop"
+? (_mode==1):goto "upperlimit"
+? (_mode==2):goto "cantstopupperlimit"
+? (_mode==3):goto "engineon"
+? (_mode==4):goto "engineon2"
+? (_mode==5):goto "suicide"
+? (_mode==6):goto "enter"
+goto "enter2"
+
+#cantstop
+? (!alive _object) : goto "Destroy"
+@(speed _object >_speed) or (not alive _object)
+@(speed _object <_speed) or (not alive _object)
+
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+
+#upperlimit
+@(speed _object >_speed) or (!alive _object)
+
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+#cantstopupperlimit
+_speed2 = _this select 4;
+@(speed _object >_speed) or (speed _object >_speed2) or (!alive _object)
+@(speed _object <_speed) or (speed _object >_speed2) or (!alive _object)
+
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+#engineon
+@(isEngineOn _object)
+~_speed
+
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+#engineon2a
+_i = 0
+@(isEngineOn _object)
+#engineon2b
+~0.1
+_i = _i + 0.1
+if !(isEngineOn _object) then {goto "engineon2a"}
+if (_i >= _speed) then {goto "destroy3"}
+goto "engineon2b"
+#destroy3
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+#suicide
+_object2 = _this select 4;
+@_object distance _object2 <_speed
+
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+#enter
+@(!IsNull Driver _object)
+~_speed
+
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit
+
+#enter2
+_i = 0
+@(!IsNull Driver _object)
+#enter2b
+~0.1
+_i = _i + 0.1
+if (IsNull Driver _object) then {goto "enter2"}
+if (_i >= _speed) then {goto "destroy3b"}
+goto "enter2b"
+#destroy3b
+_type createVehicle[(getpos _object select 0)+1*sin _unitdir, (getpos _object select 1)+1*cos _unitdir, 0]
+{_x setDamage 1} forEach crew _object
+_object setdamage 1
+exit

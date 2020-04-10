@@ -1,0 +1,13 @@
+images\Splash.paa, images\Sitrep.paa, images\Objectives.paa, images\Map.paa, images\Rebels.paa, images\UAF.paa, images\ToI.paa
+
+"Splash",
+"Sitrep",
+"Objectives",
+"Map",
+"Rebels",
+"UAF",
+"Target"
+
+images\splash.paa
+
+images\splash.paa, images\history.paa, images\sitrep.paa, images\0200.paa, images\0300.paa, images\0400.paa, images\0500.paa, images\objectives.paa

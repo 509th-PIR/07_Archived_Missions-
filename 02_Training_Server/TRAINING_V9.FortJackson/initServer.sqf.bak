@@ -1,0 +1,3 @@
+[] execVM "fn_advancedTowingInit.sqf";
+[] execVM "fn_advancedSlingLoadingInit.sqf";
+[] execVM "VCOMAI\init.sqf";

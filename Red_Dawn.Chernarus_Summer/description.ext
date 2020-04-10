@@ -1,0 +1,37 @@
+author="LTC Drifter";
+OnLoadName = "509th Operation";
+OnLoadMission = "509th Operation";
+
+respawn = "BASE";
+aikills = 1;
+DisabledAI = true;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 100;
+};
+
+#include "R3F_LOG\desc_include.h"
+
+class Extended_InitPost_EventHandlers {
+     class CAManBase {
+		init = "_this call (compile preprocessFileLineNumbers 'postInitXEH.sqf')";
+	};
+};
+
+class CfgFunctions
+{
+	#include "INC_undercover\cfgFunctions.hpp"
+};
+
+class CfgRemoteExec
+{
+   class Functions
+   {
+       mode = 2;
+       jip = 1;
+       #include "INC_undercover\functionsWhitelist.hpp"
+   };
+};
