@@ -1,0 +1,16 @@
+author="509 PIR";
+OnLoadName = "FTX 3-18-17";
+OnLoadMission = "FTX 3-18-17";
+
+respawn = "BASE";
+aikills = 1;
+DisabledAI = true;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 100;
+};
+
+#include "R3F_LOG\desc_include.h"

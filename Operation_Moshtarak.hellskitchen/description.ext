@@ -1,0 +1,16 @@
+author="LTC Drifter";
+OnLoadName = "Operation Moshtarak";
+OnLoadMission = "Operation Moshtarak";
+
+respawn = "BASE";
+aikills = 1;
+DisabledAI = true;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 100;
+};
+
+#include "R3F_LOG\desc_include.h"

@@ -1,0 +1,7 @@
+#include "downloadData.hpp"
+
+class CfgSounds
+{
+   sounds[] = {music};
+	class music {name="music";sound[]={"Sounds\music.ogg",300,1.,150};titles[] = {};};
+};
