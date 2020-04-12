@@ -1,0 +1,16 @@
+author="509 PIR";
+OnLoadName = "Operation Hidden Citadel";
+OnLoadMission = "Operation Hidden Citadel";
+
+respawn = "BASE";
+aikills = 1;
+DisabledAI = true;
+
+class Header
+{
+	gameType = COOP;
+	minPlayers = 1;
+	maxPlayers = 100;
+};
+
+#include "R3F_LOG\desc_include.h"

@@ -1,0 +1,1 @@
+execVM "f\headlessclient\passToHCs.sqf";
